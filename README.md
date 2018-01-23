@@ -17,3 +17,7 @@ install into your home directory:
 
     python3 setup.py install --user
 
+
+## Validating data
+
+Please see https://github.com/iqbal-lab-org/clockwork/wiki/Spreadsheet-validation
