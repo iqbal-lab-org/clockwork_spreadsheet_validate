@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+import clockwork
+import argparse
+
+parser = argparse.ArgumentParser(
+    prog='clockwork_validate_spreadsheet',
+    usage='clockwork_validate_spreadsheet [options] <in.xlsx> <data_dir> <errors_out.txt>',
+    description='Validates import spreadsheet, and checks files in the sheet are on disk, in the directory data_dir. Writes errors to errors_out.txt -- this will be empty if no errors found',
+)
+
+parser.add_argument('infile', help='Name of input spreadsheet file')
+parser.add_argument('data_dir', help='Name of directory containing FASTQ files')
+parser.add_argument('outfile', help='Name of output file containing any errors found')
+parser.add_argument('--threads', type=int, help='Number of files to calculate md5 sum in parallel. Set to zero to skip md5 checks [%(default)s]', metavar='INT', default=1)
+parser.add_argument('--version', action='version', version=clockwork.__version__)
+options = parser.parse_args()
+
+validator = spreadsheet_validator.SpreadsheetValidator(
+    options.infile,
+    options.data_dir,
+    options.outfile,
+    md5_threads=options.threads,
+)
+validator.run()
+
