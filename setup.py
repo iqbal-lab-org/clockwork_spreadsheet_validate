@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='clockwork_validate_spreadsheet',
-    version='0.1.5',
+    version='0.1.6',
     description='Checks import spreadsheet for clockwork pipeline',
     packages = find_packages(),
     author='Martin Hunt',
